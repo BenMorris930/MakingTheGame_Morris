@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidBody;
+    private Animator playerAnim;
     public float jumpHeight = 8;
     public float gravityMultiplier = 1;
     private bool canJump = true;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             playerRigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            playerAnim.SetTrigger("Jump_trig");
             canJump = false;
         }
     }
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
+            playerAnim.SetBool("Death_b", true);
             Debug.Log("Game Over!");
         }
 
