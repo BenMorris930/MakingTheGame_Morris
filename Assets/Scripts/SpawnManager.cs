@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject backgroundPrefab;
     private Vector3 spawnLocation = new Vector3(30, 0, 0);
     private int initialWait = 1;
-    private int spawnTime = 2;
+    private int spawnTime = 3;
     private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
